@@ -1,0 +1,67 @@
+//frame = LCL
+@LCL
+D=M
+@14
+M=D
+
+//retAddr = *(frame-5)
+@5
+A=D-A
+A=M
+D=M
+@15
+M=D
+
+//*ARG = pop
+pop argument 0
+
+//SP = ARG + 1
+@ARG
+M=D
+@SP
+M=D+1
+
+//THAT = *(frame - 1)
+@14
+M=D
+@1
+A=D-A
+A=M
+D=M
+@THAT
+M=D
+
+//THIS = *(frame - 2)
+@14
+M=D
+@2
+A=D-A
+A=M
+D=M
+@THIS
+M=D
+
+//ARG = *(frame - 3)
+@14
+M=D
+@3
+A=D-A
+A=M
+D=M
+@ARG
+M=D
+
+//LCL = *(frame - 4)
+@14
+M=D
+@4
+A=D-A
+A=M
+D=M
+@LCL
+M=D
+
+//goto retAddr
+@15
+0;JMP
+
